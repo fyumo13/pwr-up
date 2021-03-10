@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactToolTip from 'react-tooltip';
 
 import { logout } from '../../api/index';
 
@@ -25,13 +26,16 @@ export default function CustomSidebar({ theme, toggleTheme, authenticated }) {
             </Link>
             <SidebarNav>
                 <SidebarNavItem to="/dashboard">
-                    <WorkoutsIcon />
+                    <WorkoutsIcon data-tip data-for="workouts" />
+                    <ReactToolTip id="workouts" place="right" backgroundColor="var(--primary)" delayShow={250} delayHide={250}>Workouts</ReactToolTip>
                 </SidebarNavItem>
                 <SidebarNavItem to="/profile">
-                    <UserIcon />
+                    <UserIcon data-tip data-for="profile" />
+                    <ReactToolTip id="profile" place="right" backgroundColor="var(--primary)" delayShow={250} delayHide={250}>Profile</ReactToolTip>
                 </SidebarNavItem>
                 <SidebarNavItem onClick={logout}>
-                    <LogoutIcon />
+                    <LogoutIcon data-tip data-for="logout" />
+                    <ReactToolTip id="logout" place="right" backgroundColor="var(--primary)" delayShow={250} delayHide={250}>Log Out</ReactToolTip>
                 </SidebarNavItem>
             </SidebarNav>
             <ToggleContainer lightTheme={isLight} onClick={toggleTheme}>
