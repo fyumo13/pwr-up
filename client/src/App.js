@@ -45,7 +45,7 @@ export default function App() {
         <GlobalStyles />
         { authenticated ? <CustomSidebar theme={theme} toggleTheme={toggleTheme} /> : <CustomTopbar theme={theme} toggleTheme={toggleTheme} /> }
         <Switch>
-          <Route exact path="/" component={LandingPage} />
+          <PublicRoute exact path="/" authenticated={authenticated} component={LandingPage} />
           <PublicRoute path="/login" authenticated={authenticated} component={Login} />
           <PublicRoute path="/register" authenticated={authenticated} component={Registration} />
           <PrivateRoute path="/dashboard" authenticated={authenticated} component={Dashboard} />
