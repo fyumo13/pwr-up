@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import moment from 'moment';
 
 import { fetchRoutine } from '../api/index';
 
@@ -13,12 +14,14 @@ import { Wrapper } from '../components/layout/Wrapper';
 export default function Routine() {
     const [routine, setRoutine] = useState(null);
     const [name, setName] = useState('');
+    const [date, setDate] = useState('');
     let { id } = useParams();
 
     useEffect(() => {
         fetchRoutine(id)
             .then(res => {
                 setName(res.data.routine.name);
+                setDate(res.data.routine.createdAt);
                 setRoutine(res.data.routine.sets.map(set => {
                     return <SetCard set={set} key={set._id} />
                 }));
@@ -35,7 +38,7 @@ export default function Routine() {
             </Panel>
             <Panel>
                 <h5>{name}</h5>
-                <SpanText>Routine Name</SpanText>
+                <p><SpanText>{moment(date).format('MM/DD/YYYY')}</SpanText></p>
                 {routine}
             </Panel>
         </Wrapper>

@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 
 const baseUrl = "https://shrouded-ocean-75153.herokuapp.com/api";

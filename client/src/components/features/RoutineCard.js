@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 
 import { updateRoutine, deleteRoutine } from '../../api/index';
+
 import Alert from '../shared/Alert';
 import Button from '../shared/Button';
 import { ButtonGroup } from '../shared/ButtonGroup';
 import { Card, CardTitle } from '../shared/Card';
 import { Form, FormGroup, FormInput } from '../shared/Form';
+import { SpanText } from '../shared/SpanText';
 import { TextLink } from '../shared/TextLink';
 
 import { ReactComponent as CloseIcon } from '../../assets/icons/close-icon.svg';
@@ -64,6 +67,7 @@ export default function RoutineCard(props) {
                 <CardTitle>
                     <TextLink to={`/routine/${props.routine._id}`}>
                         <h5>{props.routine.name}</h5>
+                        <SpanText>{moment(props.routine.createdAt).format('MM/DD/YYYY')}</SpanText>
                     </TextLink>
                     <ButtonGroup>
                         <EditIcon onClick={() => setEdit(true)} />
